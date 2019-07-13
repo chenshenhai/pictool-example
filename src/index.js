@@ -1,10 +1,9 @@
 import Pictool from 'pictool';
 
-
-var src = './image/lena.jpg';
-var Sandbox = Pictool.browser.Sandbox;
-var sandbox = new Sandbox(src);
-var dom = document.querySelector('#display');
+const src = './image/lena.jpg';
+const Sandbox = Pictool.browser.Sandbox;
+const sandbox = new Sandbox(src);
+const dom = document.querySelector('#display');
 
 sandbox.queueProcess([
   {
