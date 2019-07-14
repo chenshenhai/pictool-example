@@ -37,4 +37,21 @@ Pictool.browser.util.getImageDataBySrc(imgSrc).then(function(imgData) {
 });
 
 
+// example: Pictool.browser.Sandbox
+const sandbox = new Pictool.browser.Sandbox(imgSrc);
+
+sandbox.queueProcess([
+  {
+    process: 'sobel',
+    options: {},
+  },
+  {
+    process: 'invert',
+    options: {},
+  }
+]).then(function(base64) {
+  document.getElementById('J_Example_06').innerHTML = `<img src="${base64}" />`;
+}).catch(function(err) {
+  console.log(err);
+});
 
