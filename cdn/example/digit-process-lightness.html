@@ -10,11 +10,12 @@
   </head>
   <body>
 
-    <div class="box">
+    <div >
       <img src="./assets/image/test.jpg" />
     </div>
 
-    <div  class="box" id="J_Example"></div>
+    <br/>
+    <div id="J_Example"></div>
 
   </body>
   <script>
@@ -28,8 +29,10 @@
     }
 
     const digitImg = util.imageData2DigitImageData(imgData);
-    const rsDigitImg = process.lightness(digitImg, { percent: 70 });
 
+    // 亮度提高 70%
+    const rsDigitImg = process.lightness(digitImg, { percent: 70 });
+    
     const rsImgData = util.digitImageData2ImageData(rsDigitImg);
     const base64 = util.imageData2Base64(rsImgData);
 

@@ -19,19 +19,18 @@
   </body>
   <script>
   (async function(Pictool) {
-    const util = Pictool.browser.util;
-    const process = Pictool.digit.process;
-    const imgData = await util.getImageDataBySrc('./assets/image/test.jpg');
-    if (imgData instanceof Error) {
-      console.log(imgData);
-      return;
-    }
+    const imgSrc = './assets/image/test.jpg';
+    const Sandbox = Pictool.browser.Sandbox;
+    const sandbox = new Sandbox(imgSrc);
 
-    const digitImg = util.imageData2DigitImageData(imgData);
-    const rsDigitImg = process.lightness(digitImg, { percent: 70 });
-
-    const rsImgData = util.digitImageData2ImageData(rsDigitImg);
-    const base64 = util.imageData2Base64(rsImgData);
+    const base64 = await sandbox.queueProcess([
+      {
+        process: 'lightness',
+        options: {
+          percent: 70
+        },
+      }
+    ])
 
     document.getElementById('J_Example').innerHTML = `<img src="${base64}">`
 
