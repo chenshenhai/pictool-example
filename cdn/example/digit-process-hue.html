@@ -28,8 +28,8 @@
 
     const digitImg = util.imageData2DigitImageData(imgData);
 
-    // 亮度提高 70%
-    const rsDigitImg = process.lightness(digitImg, { percent: 70 });
+    // 色相值设置为 240
+    const rsDigitImg = process.hue(digitImg, { value: 240 });
     
     const rsImgData = util.digitImageData2ImageData(rsDigitImg);
     const base64 = util.imageData2Base64(rsImgData);
