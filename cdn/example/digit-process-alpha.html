@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <style>
+      .box {width: 200px; height: 200px; float: left; margin-left: 10px; }
+      img { max-height: 200px; max-width: 200px; }
+    </style>
+    <script src="https://unpkg.com/pictool/dist/index.js"></script>
+  </head>
+  <body>
+
+    <div class="box">
+      <img src="./assets/image/test.jpg" />
+    </div>
+
+    <div  class="box" id="J_Example"></div>
+
+  </body>
+  <script>
+  (async function(Pictool) {
+    const util = Pictool.browser.util;
+    const process = Pictool.digit.process;
+    const imgData = await util.getImageDataBySrc('./assets/image/test.jpg');
+    if (imgData instanceof Error) {
+      console.log(imgData);
+      return;
+    }
+
+    const digitImg = util.imageData2DigitImageData(imgData);
+
+    // 透明度 降低 40%
+    const rsDigitImg = process.alpha(digitImg, { percent: -40 });
+    
+    const rsImgData = util.digitImageData2ImageData(rsDigitImg);
+    const base64 = util.imageData2Base64(rsImgData);
+
+    document.getElementById('J_Example').innerHTML = `<img src="${base64}">`
+
+  })(window.Pictool);
+  </script>
+</html>
