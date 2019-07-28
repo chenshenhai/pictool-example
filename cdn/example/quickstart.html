@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <script src="https://unpkg.com/pictool/dist/index.min.js"></script>
+  </head>
+  <body>
+
+  </body>
+  <script>
+  (function(Pictool) {
+    const util = Pictool.browser.util;
+    const PictoolUI = Pictool.UI;
+    // 获取在线测试图片，实际使用请输入实际的图片URL
+    util.getImageDataBySrc('./assets/image/test.jpg').then(function(imgData) {
+      const pictoolUI = new PictoolUI(imgData, {
+        uiConfig: {
+          language: 'zh-cn',
+        },
+      });
+      pictoolUI.show();
+    }).catch(function(err) {
+      alert(JSON.stringify(err));
+    });
+  })(window.Pictool);
+  </script>
+</html>
